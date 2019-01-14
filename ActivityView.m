@@ -128,7 +128,10 @@ RCT_EXPORT_METHOD(show:(NSDictionary *)args)
 
     // Display the Activity View
     UIViewController *ctrl = [[[[UIApplication sharedApplication] delegate] window] rootViewController];
-
+    while (ctrl.presentedViewController) {
+        ctrl = ctrl.presentedViewController;
+    }
+    
     /*
      * The `anchor` option takes a view to set as the anchor for the share
      * popup to point to, on iPads running iOS 8. If it is not passed, it
